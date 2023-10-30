@@ -19,12 +19,12 @@ class City(models.Model):
 class Tour(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название тура")
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
-    City = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, null=True, blank=True, on_delete=models.CASCADE)
     price = models.PositiveIntegerField(
         verbose_name=_('Цена тура'),
         validators=[
             MinValueValidator(0, _("Цена не может быть меньше 0")),
-            MaxValueValidator(100, _("Цена не может быть больше 10000"))
+            MaxValueValidator(10000, _("Цена не может быть больше 10000"))
         ]
     )
     description = models.CharField(max_length=200, verbose_name="Описание тура")
