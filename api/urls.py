@@ -2,5 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('tours/', views.ToursList.as_view()),
+    path('alltourslist/', views.ToursList.as_view()),
+
+    # Auth
+    path('signup/', views.signup),
+    path('login/', views.login),
 ]
