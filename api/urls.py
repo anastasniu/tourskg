@@ -5,6 +5,7 @@ urlpatterns = [
     path('alltourslist/', views.ToursList.as_view()),
 
     # Auth
-    path('signup/', views.signup),
-    path('login/', views.login),
+    path('accounts/signup/', views.signup),
+    path('accounts/login/', views.login),
 ]
+

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Libs
     'rest_framework',
     'django_extensions',
+    'drf_yasg',
 
     # Auth
     'rest_framework.authtoken'
