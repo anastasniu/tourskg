@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('alltourslist/', views.ToursList.as_view()),
+    path('allcomments/', views.ReviewsList.as_view()),
+
 
     # Auth
     path('accounts/signup/', views.signup),

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Apps
     'tours',
     'api',
+    'comments',
 
     # Libs
     'rest_framework',
