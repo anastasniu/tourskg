@@ -1,7 +1,7 @@
-from rest_framework import generics
-from .serializers import ToursSerializer, ReviewsSerializer
-from tours.models import Tour
-from comments.models import Review
+# from rest_framework import generics
+# from .serializers import ToursSerializer, ReviewsSerializer
+# from tours.models import Tour
+# from comments.models import Review
 # Auth signup
 from django.db import IntegrityError
 from django.contrib.auth.models import User
@@ -12,15 +12,15 @@ from django.views.decorators.csrf import csrf_exempt
 # Auth login 
 from django.contrib.auth import authenticate
 
-class ToursList(generics.ListAPIView):
+# class ToursList(generics.ListAPIView):
 
-    serializer_class = ToursSerializer
-    queryset = Tour.objects.all()
+#     serializer_class = ToursSerializer
+#     queryset = Tour.objects.all()
 
-class ReviewsList(generics.ListAPIView):
+# class ReviewsList(generics.ListAPIView):
 
-    serializer_class = ReviewsSerializer
-    queryset = Review.objects.all()
+#     serializer_class = ReviewsSerializer
+#     queryset = Review.objects.all()
 
     
 @csrf_exempt

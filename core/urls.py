@@ -11,12 +11,12 @@ urlpatterns = [
     #Auth
     path ('auth/', include('djoser.urls')),
     path ('auth/', include('djoser.urls.jwt')),
-
-    #API
-    path('api/', include('api.urls')),
     
     #Swagger
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+
+    # Apps
+    path('tours/', include('tours.urls')),
 
 ]
 
