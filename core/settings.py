@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,14 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps
     'tours',
+    'accounts',
     'api',
     'comments',
+    
 
     # Libs
     'rest_framework',
     'django_extensions',
     'drf_yasg',
     'rest_framework_simplejwt',
+    'djoser',
 
     # Auth
     'rest_framework.authtoken',
@@ -144,4 +148,9 @@ REST_FRAMEWORK = {
 'rest_framework.authentication.TokenAuthentication',
 'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT'),
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3)
 }

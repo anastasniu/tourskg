@@ -9,13 +9,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     #Auth
-    path('api-auth/', include('rest_framework.urls')),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path ('auth/', include('djoser.urls')),
+    path ('auth/', include('djoser.urls.jwt')),
 
     #API
     path('api/', include('api.urls')),
-
+    
+    #Swagger
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
 ]

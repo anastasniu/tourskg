@@ -7,6 +7,10 @@ class City(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Область"
+        verbose_name_plural = "Области"
 
 class Address(models.Model):
     name = models.CharField(max_length=100)
@@ -14,6 +18,11 @@ class Address(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Город"
+        verbose_name_plural = "Города"
+
 
 
 class Tour(models.Model):
@@ -41,5 +50,9 @@ class Tour(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    class Meta:
+        verbose_name = "Тур"
+        verbose_name_plural = "Туры"
 
 

@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from .models import Tour
+from api.serializers import ToursSerializer
+from rest_framework import generics
 
-# Create your views here.
+
+class TourAPIView(generics.ListCreateAPIView):
+    queryset = Tour.objects.all()
+    serializer_class = ToursSerializer
