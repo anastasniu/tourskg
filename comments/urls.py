@@ -1,8 +1,7 @@
 from django.urls import path
-from . import views
+from comments import views
 
 
 urlpatterns = [
-
-    path("review/<int:pk>/", views.create_review.as_view(), name="add_review"),
+    path('api/comments/',views.ReviewList.as_view()),
 ]

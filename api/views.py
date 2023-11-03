@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .serializers import ToursSerializer, ReviewsSerializer
+from .serializers import ToursSerializer
 from tours.models import Tour
 from comments.models import Review
 # Auth signup
@@ -17,10 +17,7 @@ class ToursList(generics.ListAPIView):
     serializer_class = ToursSerializer
     queryset = Tour.objects.all()
 
-class ReviewsList(generics.ListAPIView):
 
-    serializer_class = ReviewsSerializer
-    queryset = Review.objects.all()
 
     
 @csrf_exempt
@@ -51,3 +48,4 @@ def login(request):
             except:
                 token = Token.objects.create(user=user)
             return JsonResponse({'token':str(token)}, status=201)
+        

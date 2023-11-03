@@ -1,7 +1,9 @@
 from django.shortcuts import redirect
 from django.views.generic.base import View
-from .models import Tour
+from .models import Review
 from .forms import ReviewForm
+from rest_framework import generics,permissions
+from .serializers import ReviewsSerializer
 
 # class AddReview(View):
 #     """Отзывы"""
@@ -14,19 +16,30 @@ from .forms import ReviewForm
 #             form.save()
 #         return redirect(movie.get_absolute_url())
 
-from django.shortcuts import render, redirect
-from .models import Review
+# from django.shortcuts import render, redirect
+# from .models import Review
 
-def create_review(request, tour_id):
-    if request.method == 'POST':
-        user = request.user
-        text = request.POST.get('text')
-        tour = Tour.objects.get(id=tour_id)
-        Review.objects.create(user=user, text=text, tour=tour)
-    return redirect('tour_detail', tour_id=tour_id)
+# def create_review(request, tour_id):
+#     if request.method == 'POST':
+#         user = request.user
+#         text = request.POST.get('text')
+#         tour = Tour.objects.get(id=tour_id)
+#         Review.objects.create(user=user, text=text, tour=tour)
+#     return redirect('tour_detail', tour_id=tour_id)
 
-def view_reviews(request, tour_id):
-    tour = Tour.objects.get(id=tour_id)
-    reviews = Review.objects.filter(tour=tour, parent=None)
+# def view_reviews(request, tour_id):
+#     tour = Tour.objects.get(id=tour_id)
+#     reviews = Review.objects.filter(tour=tour, parent=None)
 
-    return render(request, 'reviews.html', {'tour': tour, 'reviews': reviews})
+#     return render(request, 'reviews.html', {'tour': tour, 'reviews': reviews})
+
+
+
+class ReviewList(generics.ListCreateAPIView):
+    queryset=Review.objects.all()
+    serializer_class=ReviewsSerializer
+    permission_classes=[permissions.IsAuthenticated]
+
+
+    def perform_create(self, serializer):
+        serializer.save(poster=self.request.user)
